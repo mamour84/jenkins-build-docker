@@ -5,7 +5,7 @@ stage('Clone'){
      checkout scm
 }
 def img = stage('BUILD Image'){
-  docker.build("$IMAGE", '.')
+  docker.build("$IMAGE")
 }
 stage('RUN image'){
    img.withRun('-p 8090:80 --name run-$BUIL_ID-nginx'){ c->
