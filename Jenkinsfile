@@ -3,7 +3,7 @@ stage('Clone'){
      checkout scm
 }
 def img = stage('BUILD Image'){
-  docker.build('mamoune/nginx')
+  docker.build('mamounesene/nginx')
 }
 stage('RUN image'){
    img.withRun('-p 8090:80 --name run-$BUIL_ID-nginx'){ c->
@@ -13,7 +13,7 @@ stage('RUN image'){
 }
 }
 stage('Push'){
- docker.withRegistry('https://registry.gitlab.com', 'reg1'){
+ docker.withRegistry('https://hub.docker.com'){
    img.push 'latest'
    img.push()
 }
