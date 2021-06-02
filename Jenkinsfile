@@ -16,8 +16,8 @@ stage('RUN image'){
 }
 stage('Push'){
 
- docker.withRegistry(){
-      img.push '${env.BUILD_ID}'
+ docker.withRegistry(''){
+     
       img.push 'latest'
   
 }
