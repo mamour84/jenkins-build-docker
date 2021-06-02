@@ -3,10 +3,10 @@ stage('Clone'){
      checkout scm
    }
 stage('BUILD Image'){
-  docker.build('Mamoune/nginx')
+  docker.build('mamoune/nginx')
 }
 stage('RUN image'){
-   docker.image('Mamoune/nginx').withRun('-p 8090:80 --name testnginx'){ c->
+   docker.image('mamoune/nginx').withRun('-p 8090:80 --name testnginx'){ c->
    sh 'docker ps'
    sh 'sleep 20'
    sh 'curl localhost:8090'
