@@ -13,7 +13,7 @@ stage('RUN image'){
 }
 }
 stage('Push'){
- docker.withRegistry('https://hub.docker.com'){
+ docker.withRegistry(''){
    img.push 'latest'
   
 }
