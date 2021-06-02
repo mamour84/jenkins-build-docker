@@ -1,17 +1,26 @@
 node{
 stage('Clone'){
-     git credentialsId: 'ffcf732e-405c-448f-b67f-97270178037c', url: 'https://github.com/mamour84/valaxy-hello-world.git'
-   }
-stage('BUILD Image'){
+     checkout scm
+}
+def img = stage('BUILD Image'){
   docker.build('mamoune/nginx')
 }
 stage('RUN image'){
-   docker.image('mamoune/nginx').withRun('-p 8090:80 --name testnginx'){ c->
+   img.withRun('-p 8090:80 --name run-$BUIL_ID-nginx'){ c->
    sh 'docker ps'
    sh 'sleep 20'
    sh 'curl localhost:8090'
 }
 }
+stage('Push'){
+ docker.withRegistry('https://registry.gitlab.com', 'reg1'){
+   img.push 'latest'
+   img.push()
 }
+
+}
+
+}
+
 
 
