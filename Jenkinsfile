@@ -1,5 +1,5 @@
 node{
-def registryProjet='hub.docker.com/mamounesene/monginx'
+def registryProjet='mamounesene/monginx'
 def IMAGE="${registryProjet}:version-${env.BUILD_ID}"
 stage('Clone'){
      checkout scm
