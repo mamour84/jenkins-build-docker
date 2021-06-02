@@ -16,7 +16,7 @@ stage('RUN image'){
 }
 stage('Push'){
 
- docker.withRegistry('https://hub.docker.com', 'reg1'){
+ docker.withRegistry('https://hub.docker.com'){
  img.push 'latest'
   
 }
